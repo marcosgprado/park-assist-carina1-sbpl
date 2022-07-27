@@ -1,0 +1,18 @@
+base_global_planner: SBPLLatticePlanner
+recovery_behaviors:  [{name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}]
+planner_patience: 10.0
+clearing_rotation_allowed: false
+
+base_local_planner: carlike_local_planner/CarLikeTrajectoryPlannerROS
+#base_local_planner: pose_follower/PoseFollower
+controller_frequency: 10.0
+
+SBPLLatticePlanner:
+   #primitive_filename: /home/marcos/ros_workspace/carinaPark/carina_sbpl_nav_lrm/matlab/teste7mprim_5cm.mprim
+   primitive_filename: /home/marcos/ros_workspace/carinaPark/carina_sbpl_nav_lrm/matlab/primitivas/carina5cmRe.mprim 
+   allocated_time: 10
+   initial_epsilon: 3.0
+   environment_type: XYThetaLattice
+   planner_type: ADPlanner
+   forward_search: true
+   lethal_obstacle: 100

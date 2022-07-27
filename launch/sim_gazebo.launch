@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+  
+  <include file="$(find summit_sbpl_nav_lrm)/launch/parkMap.launch"/>
+
+<!-- send summit.urdf to param server -->
+  <param name="robot_description" textfile="$(find summit_description)/urdf/summit.urdf"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"></node>
+  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /-->
+  
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_object" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -x 4.5 -y 7.0 -z 0.5 -model summit" respawn="false" output="screen"/>
+
+
+
+
+  <include file="$(find summit_sbpl_nav_lrm)/launch/controller_summit.launch" />
+
+
+
+
+  <include file="$(find summit_sbpl_nav_lrm)/launch/nav_sbpl.launch" />
+
+
+</launch>

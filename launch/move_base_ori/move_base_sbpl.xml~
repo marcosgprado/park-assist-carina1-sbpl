@@ -1,0 +1,20 @@
+<launch>
+
+  <node ns="local_costmap" name="voxel_grid_throttle" pkg="topic_tools" type="throttle" args="messages voxel_grid 3.0 voxel_grid_throttled" />
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen" args="cmd_vel:=cmd_vel1">
+    <param name="footprint_padding" value="0.01" />
+    <param name="controller_frequency" value="20.0" />
+    <param name="controller_patience" value="100.0" />
+       
+       <remap from="odom" to="odom_gazebo" />
+       
+    <rosparam file="$(find carina_sbpl_nav_lrm)/launch/move_base/costmap/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find carina_sbpl_nav_lrm)/launch/move_base/costmap/costmap_common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find carina_sbpl_nav_lrm)/launch/move_base/costmap/local_costmap.yaml" command="load" />
+    <rosparam file="$(find carina_sbpl_nav_lrm)/launch/move_base/costmap/global_costmap.yaml" command="load" />
+    <rosparam file="$(find carina_sbpl_nav_lrm)/launch/move_base/sbpl/sbpl_global_params.yaml" command="load" />
+    <rosparam file="$(find carina_sbpl_nav_lrm)/launch/move_base/local_planner/base_local_planner.yaml" command="load" ns="TrajectoryPlannerROS"/> 
+  </node>
+</launch>

@@ -1,0 +1,20 @@
+TrajectoryPlannerROS:
+#CarLikeTrajectoryPlannerROS
+  sim_time: 4.0
+  sim_granularity: 0.1
+  path_distance_bias: .9
+  goal_distance_bias: .9
+  occdist_scale: 0.0
+  stop_time_buffer: 0.2
+  oscillation_reset_dist: 0.4
+
+  vx_samples: 5
+  steer_samples: 9
+  max_vel_x: 0.45
+  min_vel_x: 0.3
+  base_wheels: 1.65
+  steer: 0.523
+  xy_goal_tolerance: 0.15
+  yaw_goal_tolerance: 0.10
+
+

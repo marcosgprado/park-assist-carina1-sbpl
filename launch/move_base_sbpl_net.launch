@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- <master auto="start"/>  -->
+   <param name="/use_sim_time" value="true"/>  
+   <!--Ambiente simulado no Gazebo--> 
+   <!--<include file="$(find carina_sbpl_nav_lrm)/launch/parkMap.launch"/>-->
+   <include file="$(find carina_gazebo)/launch/city_world.launch"/>
+
+   <!-- send carina.urdf to param server -->
+   <param name="robot_description" textfile="$(find carina_description)/urdf/carina.urdf"/>
+
+  
+   <!-- push robot_description to factory and spawn robot in gazebo -->
+   <!-- <node name="spawn_object" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -x 1 -y -14.3 -z 0.2 -Y 3.14  -model carina" respawn="false" output="screen"/>--> 
+   <node name="spawn_object" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -x -7 -y 14.5 -z 0.2 -Y 4.71 -model carina" respawn="false" output="screen"/>
+    <!-- <node name="spawn_object" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -x 0 -y 0 -z 0.2 -Y 1.57 -model carina" respawn="false" output="screen"/>-->
+   <!-- <node name="spawn_object" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -x -11 -y -7 -z 0.2 -Y 0.77  -model carina" respawn="false" output="screen"/> -->
+
+
+   <!--Controle-->
+   <include file="$(find carina_sbpl_nav_lrm)/launch/controller_carina.launch"/> 
+
+</launch>

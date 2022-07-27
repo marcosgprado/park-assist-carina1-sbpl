@@ -1,0 +1,15 @@
+<package>
+  <description brief="carina_sbpl_nav_lrm">
+
+     carina_sbpl_nav_lrm
+
+  </description>
+  
+  <review status="unreviewed" notes=""/>
+  <depend package="roscpp"/>
+  <depend package="sbpl"/>
+  <depend package="sbpl_lattice_planner"/>
+  <depend package="atuacao"/>
+</package>
+
+

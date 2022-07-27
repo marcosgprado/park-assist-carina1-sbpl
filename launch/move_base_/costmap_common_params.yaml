@@ -1,0 +1,40 @@
+map_type: costmap
+transform_tolerance: 0.3
+obstacle_range: 10.0
+raytrace_range: 8.0
+inflation_radius: 1.7
+robot_radius: 1.0
+max_obstacle_height: 1.0
+footprint_padding: 0.001
+cost_scaling_factor: 1.0
+lethal_cost_threshold: 100
+
+
+
+#base_footprint
+#footprint: [[-1.275, -0.9], [-1.275, 0.9], [1.275, 0.9], [1.7, 0.0], [1.275, -0.9]]
+
+#base_footprint_back
+footprint: [[-0.605, -0.65], [-0.605, 0.65], [1.945, 0.65], [2.3, 0.0], [1.945, -0.75]]
+
+
+
+observation_sources: scan_front scan_rear0 scan_rear1 # scan merge_cloud
+
+
+#scan: {topic: /scan, sensor_frame: base_footprint, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+
+scan_front: {topic: /scan_front, sensor_frame: sick_parallel_laser_link, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+
+
+scan_rear0: {topic: /scan_rear0, sensor_frame: hokuyo_laser_right_link, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+
+ 
+scan_rear1: {topic: /scan_rear1, sensor_frame: hokuyo_laser_left_link, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+
+#merged_cloud: {sensor_frame: base_link, topic: /merged_cloud, data_type: PointCloud2, expected_update_rate: 0.2,
+#                       observation_persistence: 4.6, marking: true, clearing: false, min_obstacle_height: -0.10, max_obstacle_height: 2.0}
+
+
+
+

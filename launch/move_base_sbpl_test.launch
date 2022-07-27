@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+  <param name="/use_sim_time" value="true"/>
+    
+
+   <!--Ambiente simulado no Gazebo--> 
+   <!--<include file="$(find carina_sbpl_nav_lrm)/launch/parkMap.launch"/>-->
+         <include file="$(find carina_gazebo)/launch/carina_city_world.launch"/> 
+
+
+   <!-- send carina.urdf to param server -->
+   <param name="robot_description" textfile="$(find carina_description)/urdf/carina.urdf"/>
+
+
+   <!-- push robot_description to factory and spawn robot in gazebo -->
+    <node name="spawn_object" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -x 0 -y 0 -z 0.2 -Y 1.57  -model carina" respawn="false" output="screen"/>
+
+
+   <!--Controle-->
+   <include file="$(find carina_sbpl_nav_lrm)/launch/controller_carina.launch"/>  
+
+
+
+   <!--Leitura e fusão dos lasers-->
+   <!--Odometria por laser_scan_matcher-->
+   <include file="$(find carina1_mapping)/launch/carina1_mapping.launch"/>
+
+
+    <!--Mapa estático-->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find carina_sbpl_nav_lrm)/worlds/map1200_1200.yaml" />
+
+    <!--Mapeamento-->
+    <!--<include file="$(find carina_sbpl_nav_lrm)/launch/move_base/slam_gmapping.xml"/>     map1200_1200.pgm 0.05-->
+   
+    <!--Navegação-->
+   <include file="$(find carina_sbpl_nav_lrm)/launch/nav_sbpl.launch"/> 
+   
+   
+   
+    <!--- Run EFK Filter -->
+ <!-- <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+    <remap from="imu_data" to="imu_gazebo" />
+    <remap from="odom" to="odom_scan" />
+    <remap from="vo" to="odom_gazebo" />
+    
+    <param name="output_frame" value="odom"/> 
+       
+    <param name="freq" value="100.0"/>
+    <param name="sensor_timeout" value="1.0"/>  
+    <param name="publish_tf" value="true"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="true"/>
+    <param name="debug" value="true"/>
+  </node>
+ 
+ --> 
+  
+
+
+   <include file="$(find carina_sbpl_nav_lrm)/launch/rviz.xml"/>
+  
+   
+</launch>

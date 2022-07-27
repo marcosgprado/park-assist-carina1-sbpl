@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+
+<gazebo:world 
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz" 
+  xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model" 
+  xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" 
+  xmlns:window="http://playerstage.sourceforge.net/gazebo/xmlschema/#window" 
+  xmlns:param="http://playerstage.sourceforge.net/gazebo/xmlschema/#param" 
+  xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body" 
+  xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom" 
+  xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint" 
+  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" 
+  xmlns:ui="http://playerstage.sourceforge.net/gazebo/xmlschema/#ui"
+  xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering" 
+  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+  xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics" >
+
+  <verbosity>5</verbosity>
+
+  <physics:ode>
+    <stepTime>0.03</stepTime>
+    <gravity>0 0 -9.8</gravity>
+    <cfm>10e-5</cfm>
+    <erp>0.8</erp>
+  </physics:ode>
+
+  <rendering:gui>
+    <type>fltk</type>
+    <size>640 480</size>
+    <pos>0 0</pos>
+  </rendering:gui>
+
+  <rendering:ogre>
+    <ambient>0.4 0.4 0.4 1.0</ambient>
+    <sky>
+      <material>Gazebo/CloudySky</material>
+    </sky>
+
+  <shadowTechnique>stencilAdditive</shadowTechnique>
+
+  </rendering:ogre>
+
+   <!-- Ground Plane -->
+   <model:physical name="plane1_model">
+    <xyz>0 0 0</xyz>
+    <rpy>0 0 0</rpy>
+    <static>true</static>
+
+    <body:plane name="plane1_body">
+      <geom:plane name="plane1_geom">
+        <normal>0 0 1</normal>
+        <size>2000 2000</size>
+        <segments>10 10</segments>
+        <uvTile>2000 2000</uvTile>
+        <material>Gazebo/GrayGrid</material>
+      </geom:plane>
+    </body:plane>
+  </model:physical>
+
+
+<!--
+  <model:physical name="Carina_model">
+    <xyz>0 0 0.145</xyz>
+    <rpy>0.0 0.0 0.0</rpy>
+    <include embedded="true">
+      <xi:include href="models/Carina_v2.model" />
+    </include>
+
+     <model:physical name="laser">
+      <xyz>1.337 0 0.3</xyz>
+
+      <attach>
+        <parentBody>chassis_body</parentBody>
+        <myBody>laser_body</myBody>
+      </attach>
+
+      <include embedded="true">
+        <xi:include href="models/sicklms200.model" />
+      </include>
+    </model:physical>
+
+-->
+
+<!--
+
+     <model:physical name="laser_2">
+      <xyz>1.28 0 0.8</xyz>
+      <rpy>0 10 0</rpy>
+
+      <attach>
+        <parentBody>chassis_body</parentBody>
+        <myBody>laser_body</myBody>
+      </attach>
+
+      <include embedded="true">
+        <xi:include href="models/sicklms200.model" />
+      </include>
+    </model:physical>
+-->
+
+  </model:physical>
+
+
+    <model:physical name="Cidade">
+    <xyz>40 -40 0.135</xyz>
+    <rpy>90 0 0</rpy>
+    <static>true</static>
+    <body:trimesh name="Cidade_body">
+      <geom:trimesh name="Cidade_geom">
+        <mesh>Cidade/Cidade.mesh</mesh>
+        <scale>0.0255 0.017 0.0255</scale>
+        <visual>
+          <scale>0.0255 0.017 0.0255</scale>
+          <rpy>0 0 0</rpy>
+          <mesh>Cidade/Cidade.mesh</mesh>
+          <material>Gazebo/Rocky</material>
+        </visual>
+      </geom:trimesh>
+    </body:trimesh>
+  </model:physical>
+
+<model:physical name="bloco01">
+    <xyz>32 -3 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco01_body">
+      <geom:box name="bloco01_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+<model:physical name="bloco02">
+    <xyz>32 3 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco02_body">
+      <geom:box name="bloco02_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+
+<model:physical name="bloco03">
+    <xyz>32 7 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco03_body">
+      <geom:box name="bloco03_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+
+
+<model:physical name="bloco04">
+    <xyz>32 11 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco04_body">
+      <geom:box name="bloco04_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+
+
+<model:physical name="bloco05">
+    <xyz>32 -7 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco05_body">
+      <geom:box name="bloco05_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+
+<model:physical name="bloco06">
+    <xyz>21 -4 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco06_body">
+      <geom:box name="bloco06_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+<model:physical name="bloco07">
+    <xyz>21 -0.5 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco07_body">
+      <geom:box name="bloco07_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+*/
+
+<model:physical name="bloco08">
+    <xyz>21 3 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco08_body">
+      <geom:box name="bloco08_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+
+
+<model:physical name="bloco09">
+    <xyz>21 7 0.7</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>true</static>
+    <body:box name="bloco09_body">
+      <geom:box name="bloco09_geom1">
+        <size>4.5 2.5 1.4</size>
+        <mass>100</mass>
+        <visual>
+          <size>4.5 2.5 1.4</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Blue</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+
+
+
+
+
+
+
+
+  <model:physical name="Muro_7">
+    <xyz>6 -15 1</xyz>
+    <canonicalBody>box1_body</canonicalBody>
+    <static>false</static>
+    <body:box name="Muro_7_body">
+      <geom:box name="Muro_7_geom1">
+        <size>3 5 1.2</size>
+        <mass>100</mass>
+        <visual>
+          <size>3 5 1.7</size>
+          <mesh>unit_box</mesh>
+          <material>Gazebo/Green</material>
+        </visual>
+      </geom:box>
+    </body:box>
+  </model:physical>
+
+
+
+<!--model:physical name="triangulo">
+   <xyz>7 2 0.52</xyz>
+   <rpy>0 0 90</rpy>
+   <static>false</static>
+   <body:trimesh name="triangulo_body">
+      <geom:trimesh name="triangulo_geom">
+         <scale>0.026 0.026 0.026</scale>
+         <mesh>Triangulo/Triangulo.mesh</mesh>
+         <material>Gazebo/PioneerBody</material>
+         <mass>10</mass>
+         <visual>
+            <scale>0.026 0.026 0.026</scale>
+            <mesh>Triangulo/Triangulo.mesh</mesh>
+            <material>Gazebo/PioneerBody</material>
+         </visual>
+      </geom:trimesh>
+   </body:trimesh>
+</model:physical-->
+
+
+  <!-- White Directional light -->
+  <model:renderable name="directional_white">
+    <static>true</static>
+    <light>
+      <type>directional</type>
+      <direction>0 -0.8 -0.3</direction>
+      <diffuseColor>0.9 0.9 0.9</diffuseColor>
+      <specularColor>0.0 0.0 0.0</specularColor>
+      <range>100</range>
+      <!-- Constant(0-1) Linear(0-1) Quadratic -->
+      <attenuation>0.0 1.0 0.4</attenuation>
+    </light>
+  </model:renderable>
+
+</gazebo:world>

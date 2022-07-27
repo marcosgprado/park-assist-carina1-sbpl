@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- start gazebo with an empty plane -->
+  <!--param name="/use_sim_time" value="true" /-->
+
+
+
+  <!--node name="gazebo" pkg="gazebo" type="gazebo" args="$(find gazebo_worlds)/worlds/parkMap.world" respawn="false" output="screen">
+        <remap from="summit_controller/command" to="cmd_vel" />  
+  </node-->
+
+
+<!--
+  <node name="gazebo" pkg="gazebo" type="gazebo" args="$(find summit_sbpl_nav)/worlds/parkMap.world" respawn="false" output="screen">
+        <remap from="summit_controller/command" to="cmd_vel" />  
+  </node>
+
+-->
+
+
+<!--
+  <include file="$(find summit_sbpl_nav_lrm)/worlds/cidade.launch" />
+
+-->
+
+
+                                <!--         Funcionando            -->
+
+  <!-- start empty gazebo world -->
+  <include file="$(find gazebo_worlds)/launch/empty_world.launch" /> 
+
+  <!-- add png world -->
+  <param name="png_world" textfile="$(find carina_sbpl_nav_lrm)/Media/models/parkMap.model" />
+
+
+  <node name="spawn_png_world" pkg="gazebo" type="spawn_model" args="-gazebo -param png_world -x -14 -y 10.6 -Y -1.5 -model map_model" respawn="false" output="screen"/>
+
+
+
+</launch>

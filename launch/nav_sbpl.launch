@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+
+<!-- remap from cmd_vel to cmd_vel1 -->
+  <include file="$(find carina_sbpl_nav_lrm)/launch/move_base/move_base_sbpl.xml" />
+
+
+  
+  
+  
+
+  
+
+</launch>

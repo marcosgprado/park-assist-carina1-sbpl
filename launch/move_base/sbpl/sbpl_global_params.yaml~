@@ -1,0 +1,26 @@
+# Planejador Global
+
+base_global_planner: SBPLLatticePlanner
+planner_patience: 50.0
+clearing_rotation_allowed: false
+
+SBPLLatticePlanner:
+   #primitive_filename: /home/andre/workspace/carinaPark/carina_sbpl_nav_lrm/matlab/primitivas/carina10cmRe.mprim
+   primitive_filename: /home/andre/workspace/carinaPark/carina_sbpl_nav_lrm/matlab/primitivas/carina10cmFrente.mprim
+   allocated_time: 20
+   initial_epsilon: 5.0
+   environment_type: XYThetaLattice
+   planner_type: ADPlanner
+   forward_search: true
+
+#planejador Local
+
+#base_local_planner: carlike_local_planner/CarLikeTrajectoryPlannerROS
+#base_local_planner: dwa_local_planner/DWAPlannerROS
+controller_frequency: 25.0
+
+
+
+# Comportamento de recuperação
+
+recovery_behaviors:  [{name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}]

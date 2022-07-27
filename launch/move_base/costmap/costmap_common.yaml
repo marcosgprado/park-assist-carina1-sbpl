@@ -1,0 +1,32 @@
+map_type: costmap
+transform_tolerance: 0.4
+obstacle_range: 10.0 #p/ ré 1
+raytrace_range: 20.0 #p/ ré 1
+inflation_radius: 0.8
+robot_radius: 0.9
+max_obstacle_height: 1.0
+footprint_padding: 0.001
+cost_scaling_factor: 10
+lethal_cost_threshold: 100
+
+
+#footprint: [[-1.275, -0.9], [-1.275, 0.9], [1.275, 0.9], [1.7, 0.0], [1.275, -0.9]]
+#footprint: [[-0.98, -0.63], [-0.98, 0.63], [1.275, 0.63], [1.7, 0.0], [1.275, -0.63]]
+
+footprint: [[-0.605, -0.7], [-0.605, 0.7], [1.945, 0.7], [2.3, 0.0], [1.945, -0.7]]
+
+#footprint: [[-0.605, -0.7], [-0.605, 0.7], [2.3, 0.7], [2.3, 0.0], [2.3, -0.7]]
+
+observation_sources: scan_front scan_rear0 scan_rear1 
+
+# Laser simulado
+#scan: {topic: /scan, sensor_frame: base_footprint, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+
+# Laser Reais
+scan_front: {topic: /scan_front, sensor_frame: sick_parallel_laser_link, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+scan_rear0: {topic: /scan_rear0, sensor_frame: hokuyo_laser_right_link, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+scan_rear1: {topic: /scan_rear1, sensor_frame: hokuyo_laser_left_link, data_type: LaserScan, expected_update_rate: 0.4, observation_persistence: 0.0, marking: true, clearing: true, max_obstacle_height: 0.6, min_obstacle_height: 0.08}
+
+                 
+
+
